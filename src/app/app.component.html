@@ -1,0 +1,67 @@
+<form class="form-container" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="example-full-width" appearance="fill">
+
+
+    <mat-label>First Name:</mat-label>
+    <input id="firstName" matInput type="text" formControlName="firstName">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Last Name:</mat-label>
+    <input id="lastName" matInput type="text" formControlName="lastName">
+  </mat-form-field>
+
+
+  <div class="date-picker-container">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </div>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Framework</mat-label>
+    <mat-select formControlName="libraries">
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let library of libraries" [value]="library.value">
+        {{library.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Version</mat-label>
+    <mat-select formControlName="version" [disabled]="profileForm.value.libraries === ''">
+      <mat-option *ngFor="let version of versionsForSelect" [value]="version">
+        {{version}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Email:</mat-label>
+    <input id="email" matInput type="text" formControlName="email">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Hobby:</mat-label>
+    <mat-select formControlName="hobby">
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let hobby of hobbies" [value]="hobby.value">
+        {{hobby.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <p>{{selectedLibrary}}</p>
+  <button mat-raised-button color="primary" type="submit" [disabled]="!profileForm.valid">Submit</button>
+
+  <div *ngIf="profileForm.controls['firstName'].invalid && (profileForm.controls['firstName'].dirty || profileForm.controls['firstName'].touched)">
+    Name is required.
+  </div>
+  <div *ngIf="isEmailError">
+    Этот email уже существует!
+  </div>
+</form>
+
+
