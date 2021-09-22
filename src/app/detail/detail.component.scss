@@ -1,0 +1,27 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+.btnDelete {
+  font-family: "Arimo", sans-serif;
+  font-weight: 700;
+  border: #000013 0.14rem solid;
+  border-radius: 0.1rem;
+  background: orangered ;
+  color: #000013;
+  padding: 0.6rem 1rem;
+  margin-bottom: 0.3rem;
+  cursor: pointer;
+}
+.nameCar {
+  font-size: x-large;
+  text-shadow:
+    1px 1px 1px silver,
+    -1px 1px 1px silver;
+  color: #6242bb;
+  transition: all .5s;
+
+
+}
+

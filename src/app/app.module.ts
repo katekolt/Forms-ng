@@ -10,11 +10,16 @@ import {MatInputModule} from "@angular/material/input";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatButtonModule} from "@angular/material/button";
 import {MatSelectModule} from "@angular/material/select";
+import { DetailComponent } from './detail/detail.component';
+import { ListComponent } from './list/list.component';
+import {DataService} from "./services/data-service";
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DetailComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,7 @@ import {MatSelectModule} from "@angular/material/select";
     MatButtonModule,
     MatSelectModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

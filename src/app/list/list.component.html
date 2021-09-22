@@ -1,0 +1,25 @@
+
+<button class='btnAdd'(click)="navigateToCreate()">+ Добавить</button>
+<button class="btnView" [disabled]="!isSelectedUser" (click)="viewMode()">Просмотр</button>
+<button class="btnView" [disabled]="!isSelectedUser" (click)="editMode()">Редактировать</button>
+<button class="btnDelete" [disabled]=!isSelectedUser (click)="deleteProfile()">Удалить</button>
+
+
+<div class="table-list">
+ <!-- <div class="table-column2">hej nekfh hehf</div>-->
+  <tr class="table-column">
+    <td>Фамилия</td>
+    <td>Имя</td>
+    <td>Отчество</td>
+    <td>Количество автомобилей</td>
+  </tr>
+  <div class="table-column"
+       *ngFor="let user of users; let i = index"
+       [ngClass]="isActiveIndex === i ? 'activeRow' : ''"
+       (click)="choiceUser(user, i)">
+    <div class="table-cell">{{user.lastName}}</div>
+      <div class="table-cell">{{user.firstName}}</div>
+      <div class="table-cell">{{user.fatherName}}</div>
+      <div class="table-cell">{{user.carCount}}</div>
+  </div>
+</div>

@@ -1,0 +1,175 @@
+.btnAdd {  font-family: "Arimo", sans-serif;
+  font-weight: 700;
+  border: #000013 0.14rem solid;
+  border-radius: 0.1rem;
+  background: #316eaf;
+  color: #000013;
+  padding: 0.6rem 1rem;
+  margin-bottom: 0.3rem;
+  cursor: pointer;}
+.btnView {
+  font-weight: 700;
+  border: #000013 0.14rem solid;
+  border-radius: 0.1rem;
+  background:  #5c9368 ;
+  color: #000013;
+  padding: 0.6rem 1rem;
+  margin-bottom: 0.3rem;
+  --btnTxt: #9a2b2b;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  transition: color 250ms;
+
+  &:hover:not(:disabled) {
+    opacity: 0.8;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: var(--focus-shadow);
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  // loading indicator
+  &::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 0.7em;
+    height: 0.7em;
+    top: calc(50% - 0.5em);
+    left: calc(50% - 0.5em);
+    border: 2px var(--btnTxt);
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-style: solid;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 250ms;
+  }
+
+  &[data-loading="true"] {
+    color: transparent;
+    pointer-events: none;
+
+    &::after {
+      opacity: 1;
+      animation: rotate 750ms linear infinite;
+    }
+
+  }}
+
+.btnSuper{  font-family: "Arimo", sans-serif;
+  font-weight: 700;
+  border: #000013 0.14rem solid;
+  border-radius: 0.1rem;
+  background: #5c9368;
+  color: #000013;
+  padding: 0.6rem 1rem;
+  margin-bottom: 0.3rem;
+  cursor: pointer;}
+
+.btnDelete {
+  font-weight: 700;
+  border: #000013 0.14rem solid;
+  border-radius: 0.1rem;
+  background: orangered ;
+  color: #000013;
+  padding: 0.6rem 1rem;
+  margin-bottom: 0.3rem;
+  --btnTxt: #9a2b2b;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  transition: color 250ms;
+
+  &:hover:not(:disabled) {
+    opacity: 0.8;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: var(--focus-shadow);
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  // loading indicator
+  &::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 0.7em;
+    height: 0.7em;
+    top: calc(50% - 0.5em);
+    left: calc(50% - 0.5em);
+    border: 2px var(--btnTxt);
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-style: solid;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 250ms;
+  }
+
+  &[data-loading="true"] {
+    color: transparent;
+    pointer-events: none;
+
+    &::after {
+      opacity: 1;
+      animation: rotate 750ms linear infinite;
+    }
+
+  }}
+
+.table-list {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+
+}
+
+.activeRow {
+  background: #2297d5;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.table-column2 {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+  width: 600px;
+}
+
+.table-column {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+  width: 600px;
+
+  &:hover {
+    background: #2297d5;
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+}
+.table-cell {
+  display: flex;
+  align-items: flex-start;
+  min-width: 100px;
+}

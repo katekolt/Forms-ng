@@ -1,0 +1,94 @@
+<form class="form-container" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <ng-container *ngIf="isEditMode">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Имя:</mat-label>
+      <input id="firstName" matInput type="text " formControlName="firstName">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Фамилия:</mat-label>
+      <input id="lastName" matInput type="text" formControlName="lastName">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Отчество:</mat-label>
+      <input id="fatherName" matInput type="text" formControlName="fatherName">
+    </mat-form-field>
+  </ng-container>
+
+  <ng-container *ngIf="!isEditMode">
+    <span>{{activeUser.firstName}}</span>
+    <span>{{activeUser.lastName}}</span>
+    <span>{{activeUser.fatherName}}</span>
+  </ng-container>
+
+
+  <div
+    *ngIf="profileForm.controls['firstName'].invalid && (profileForm.controls['firstName'].dirty || profileForm.controls['firstName'].touched)">
+    Name is required.
+  </div>
+  <p class="nameCar">Атомобили</p>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Номер</th>
+      <th scope="col">Марка</th>
+      <th scope="col">Модель</th>
+      <th scope="col">Год</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let car of cars; let i = index">
+      <td>
+        <span>{{car.carNumber}}</span>
+      </td>
+      <td>
+        <span>{{car.carBrand}}</span>
+      </td>
+      <td>
+        <span>{{car.carModel}}</span>
+      </td>
+      <td>
+        <span>{{car.carYear}}</span>
+      </td>
+      <td>
+        <button class="btnDelete" *ngIf="isEditMode" (click)="btnDelete(i, car)">Удалить</button>
+      </td>
+    </tr>
+
+    <tr *ngIf="isEditMode">
+      <td>
+        <input #carNumber/>
+      </td>
+      <td>
+        <input #carBrand/>
+      </td>
+      <td>
+        <input #carModel/>
+      </td>
+      <td>
+        <input #carYear/>
+      </td>
+
+      <td>
+        <button class="btnDelete"
+                (click)="saveCar(
+                  carNumber.value,
+                  carBrand.value,
+                  carModel.value,
+                  carYear.value)">Сохранить авто
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <button (click)=addProfile() *ngIf="isEditMode">+ Добавить автомобиль</button>
+  <button (click)=saveProfile() type="submit" [disabled]="!profileForm.valid" *ngIf="isEditMode">Сохранить</button>
+  <button mat-raised-button color="primary" (click)="navigateToHome()"> <- Назад</button>
+</form>
+
+
+
+
